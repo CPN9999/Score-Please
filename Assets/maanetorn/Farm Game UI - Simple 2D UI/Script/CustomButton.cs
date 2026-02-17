@@ -15,9 +15,7 @@ namespace FGUIStarter
         Vector2 originalTextPos;
 
         public static event Action<CustomButton> OnCustomButtonPressed;
-        public int targetSceneIndex; 
-
-        public float duration = 0.2f;   
+        public int targetSceneIndex;   
 
 
         protected override void Awake()
@@ -39,21 +37,14 @@ namespace FGUIStarter
                 return;
             } 
             ApplyPressedVisual();
-            transform.DOScale(Vector3.zero, duration)
-                .SetEase(Ease.InBack)
-                .OnComplete(SetAfterDone);
-        }
-
-
-        void SetAfterDone()
-        {
-            OnCustomButtonPressed?.Invoke(this); 
+            
         }
 
         public override void OnPointerUp(PointerEventData eventData)
         {
             base.OnPointerUp(eventData);
             ApplyNormalVisual();
+            OnCustomButtonPressed?.Invoke(this);
         }
 
         private void ApplyPressedVisual()

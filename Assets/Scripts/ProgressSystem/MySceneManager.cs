@@ -22,16 +22,25 @@ public class MySceneManager : MonoBehaviour
 
     private void OnEnable()
     {
-        CustomButton.OnCustomButtonPressed += HandleCustomButtonPressed;
+        DisapearPanel.DisapearDone += HandleCustomButtonPressed;
     }
 
     private void OnDisable()
     {
-        CustomButton.OnCustomButtonPressed -= HandleCustomButtonPressed;
+        DisapearPanel.DisapearDone -= HandleCustomButtonPressed;
     }
 
-    private void HandleCustomButtonPressed(CustomButton button)
+    private void HandleCustomButtonPressed(DisapearPanel button)
     {
-        SceneManager.LoadScene(button.targetSceneIndex+1);
+        if (button.targetSceneIndex >= 0 &&
+            button.targetSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(button.targetSceneIndex+1);
+        }
+        else
+        {
+            Debug.LogError("Scene index out of range");
+        }
+
     }
 }

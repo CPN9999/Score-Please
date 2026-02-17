@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckWin : MonoBehaviour
 {
     public int numberOfBallsInBasket = 0;
+    public GameObject winPanel;
 
     private void Awake()
     {
@@ -25,8 +26,7 @@ public class CheckWin : MonoBehaviour
         this.numberOfBallsInBasket++;
         if (this.numberOfBallsInBasket >= LevelManager.Instance.numberOfBallsToWin)
         {
-            Debug.Log("You Win!");
-            // You can add additional win logic here, such as loading a new level or showing a win screen.
+               winPanel.SetActive(true);
         }
     }
 }

@@ -16,14 +16,14 @@ public class LevelSelector : MonoBehaviour
     {
         int levelCount = SceneManager.sceneCountInBuildSettings;
         //Debug.Log("Total levels in build settings: " + levelCount);
-        int i = levelCount - 2;
-        while (i>0)
+        int i = 1;
+        while (i<levelCount-1)
         {
             int levelIndex = i; //Current level
-            Instantiate(buttonPrefabs, transform);
-            buttonPrefabs.GetComponent<CustomButton>().targetSceneIndex = levelIndex;
-            buttonPrefabs.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + (levelIndex).ToString();
-            i--;
+            GameObject newButton = Instantiate(buttonPrefabs, transform);
+            newButton.GetComponent<CustomButton>().targetSceneIndex = levelIndex;
+            newButton.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + (levelIndex).ToString();
+            i++;
         }
     }
 }

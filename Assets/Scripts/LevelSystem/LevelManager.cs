@@ -13,7 +13,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        //Lay du lieu Level
         if (Instance == null)
         {
             Instance = this;
