@@ -807,7 +807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 7822061911176104204, guid: ce68d3cf77fea6e499933992acc195e3, type: 3}
-  ballCount: 0
+  ballCount: 12
 --- !u!4 &1233643310
 Transform:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 254028782938950550, guid: afad75a0fa5cb3d42b63efaac8e7ece7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.25
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 254028782938950550, guid: afad75a0fa5cb3d42b63efaac8e7ece7, type: 3}
       propertyPath: m_LocalPosition.z
