@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class QuitButton : MonoBehaviour
 {
-    Button button;
-    void Awake()
+    [SerializeField] private MenuManagerMain manager;
+
+    public void Clicked()
     {
-           button = this.GetComponent<Button>();
+        manager.StartTransition(QuitNow);
     }
-    private void Start()
-    {
-        button.onClick.AddListener(QuitGame);
-    }
-    private void QuitGame()
+
+    private void QuitNow()
     {
         Application.Quit();
     }

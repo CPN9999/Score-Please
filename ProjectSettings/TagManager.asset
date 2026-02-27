@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - Map
+  - Goal
+  - SpawnPos
+  - Pin
+  - LevelButton
+  - GreyBall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Bomb
   - Water
   - UI
   - 

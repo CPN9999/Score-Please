@@ -14,7 +14,6 @@ namespace FGUIStarter
         RectTransform textRect;
         Vector2 originalTextPos;
 
-        public static event Action<CustomButton> OnCustomButtonPressed;
         public int targetSceneIndex;   
 
 
@@ -44,7 +43,6 @@ namespace FGUIStarter
         {
             base.OnPointerUp(eventData);
             ApplyNormalVisual();
-            OnCustomButtonPressed?.Invoke(this);
         }
 
         private void ApplyPressedVisual()

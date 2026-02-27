@@ -5,9 +5,24 @@ using UnityEngine;
 
 public class AddNextLevelFunc : MonoBehaviour
 {
-    private void Awake()
+    int levelCount;
+    private void Start()
     {
-        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        this.gameObject.GetComponentInParent<CustomButton>().targetSceneIndex = currentSceneIndex;
+        TextAsset[] levels = Resources.LoadAll<TextAsset>("Levels");
+        levelCount = levels.Length;
+    }
+
+    public void Clicked()
+    {
+        int check = LevelChosen.index;
+        if (check < levelCount)
+        {
+            LevelChosen.index++;
+            MySceneManager.instance.LoadScene(2);
+        }
+        else
+        {
+            MySceneManager.instance.LoadScene(1);
+        }
     }
 }

@@ -19,28 +19,12 @@ public class MySceneManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void OnEnable()
+    public void LoadScene(int level)
     {
-        DisapearPanel.DisapearDone += HandleCustomButtonPressed;
+        SceneManager.LoadScene(level);
     }
-
-    private void OnDisable()
+    public int GetCurrentSceneIndex()
     {
-        DisapearPanel.DisapearDone -= HandleCustomButtonPressed;
-    }
-
-    private void HandleCustomButtonPressed(DisapearPanel button)
-    {
-        if (button.targetSceneIndex >= 0 &&
-            button.targetSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(button.targetSceneIndex+1);
-        }
-        else
-        {
-            Debug.LogError("Scene index out of range");
-        }
-
+        return SceneManager.GetActiveScene().buildIndex;
     }
 }

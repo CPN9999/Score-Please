@@ -6,32 +6,22 @@ public class SpawnPosController : MonoBehaviour
 {
     public GameObject ballPrefab;
     public int ballCount;
+    int ballCount2;
 
-    private void OnEnable()
+    public void Init(GameObject ballPrefab, int ballCount)
     {
-        LevelManager.LevelLoaded += OnLevelLoaded;
-        if (LevelManager.Instance != null && LevelManager.Instance.isLoaded)
-        {
-            OnLevelLoaded(LevelManager.Instance);
-        }
-    }
-
-    private void OnDisable()
-    {
-        LevelManager.LevelLoaded -= OnLevelLoaded;
-    }
-
-    private void OnLevelLoaded(LevelManager levelManager)
-    {   
+        this.ballPrefab = ballPrefab;
+        this.ballCount = ballCount;
+        ballCount2 = ballCount;
         StartCoroutine(SpawnBall());
     }
 
     private IEnumerator SpawnBall()
     {
-        while (ballCount>0)
+        while (ballCount2>0)
         {
             Instantiate(ballPrefab, transform.position, Quaternion.identity);
-            ballCount--;
+            ballCount2--;
             yield return new WaitForSeconds(0.01f);
         }
     }

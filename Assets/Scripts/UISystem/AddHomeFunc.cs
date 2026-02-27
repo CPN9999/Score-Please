@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using FGUIStarter;
@@ -5,8 +6,10 @@ using UnityEngine;
 
 public class AddHomeFunc : MonoBehaviour
 {
-    private void Awake()
+    public static event Action OnHomeButtonPressed;
+
+    public void HomeButtonPressed()
     {
-        this.gameObject.GetComponentInParent<CustomButton>().targetSceneIndex = 0;
+        OnHomeButtonPressed?.Invoke();
     }
 }

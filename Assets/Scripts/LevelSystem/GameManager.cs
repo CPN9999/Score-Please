@@ -16,5 +16,33 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        this.numberOfBallsInBasket = 0;
+    }
+
+    private void Start()
+    {
+        winPanel = GameObject.Find("WinPanel");
+    }
+
+    public int numberOfBallsInBasket = 0;
+    public GameObject winPanel;
+
+    private void OnEnable()
+    {
+        BallController.OnBallEnterBasket += CheckWinCondition;
+    }
+
+    private void OnDisable()
+    {
+        BallController.OnBallEnterBasket -= CheckWinCondition;
+    }
+
+    private void CheckWinCondition(BallController ballController)
+    {
+        this.numberOfBallsInBasket++;
+        if (this.numberOfBallsInBasket >= LevelManager.Instance.numberOfBallsToWin)
+        {
+            winPanel.SetActive(true);
+        }
     }
 }

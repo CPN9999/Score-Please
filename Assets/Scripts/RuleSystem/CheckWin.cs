@@ -6,10 +6,17 @@ public class CheckWin : MonoBehaviour
 {
     public int numberOfBallsInBasket = 0;
     public GameObject winPanel;
+    public bool isLose= false;
+    private ILoseCondition checkLose;
 
     private void Awake()
     {
         this.numberOfBallsInBasket = 0;
+    }
+
+    private void Start()
+    {
+        checkLose = this.GetComponent<ILoseCondition>();
     }
     private void OnEnable()
     {
@@ -23,10 +30,12 @@ public class CheckWin : MonoBehaviour
 
     private void CheckWinCondition(BallController ballController)
     {
+        if (isLose) return;
         this.numberOfBallsInBasket++;
         if (this.numberOfBallsInBasket >= LevelManager.Instance.numberOfBallsToWin)
         {
-               winPanel.SetActive(true);
+            winPanel.SetActive(true);
+            checkLose.isWin = true;
         }
     }
 }
